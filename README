@@ -1,0 +1,39 @@
+An exercise that implements a naive keycolumn valuestore with persistent data storage using pickle. Class is exposed through a REST api with a very simple Flask app.
+
+author: michael barlow
+
+requires pip & virtualenv
+
+
+to setup:
+
+git clone https://github.com/mbarlow/kv_exercise.git
+
+cd kv_exercise && ./bootstrap.sh 
+
+
+bootstrap.sh will do the following:
+
+    * create a virtualenv inside an env folder
+    * activate the virtualenv
+    * install the requirements.txt (inside virtualenv) using pip
+    * run the unittests in tests.py to test the class methods, persistent data store, and the REST web app.
+
+run ./run.sh afterwards to launch the webserver on port 5000. 
+
+REST examples (use curl, a browser, or postman chrome extension to interact):
+
+    GET:
+    http://localhost:5000/api/v1/keys
+    http://localhost:5000/api/v1/keys/<key>
+    http://localhost:5000/api/v1/keys/<key>/<col>
+
+    GET (slices): 
+    http://localhost:5000/api/v1/keys/<key>/slice?start=aa&stop=ab
+
+    POST: 
+    http://localhost:5000/api/v1/keys/<key>/<col>?val=whatever
+
+    DELETE:
+    http://localhost:5000/api/v1/keys/<key>
+    http://localhost:5000/api/v1/keys/<key>/<col>
